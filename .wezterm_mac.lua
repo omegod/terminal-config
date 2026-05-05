@@ -140,4 +140,18 @@ config.window_close_confirmation = 'NeverPrompt'
 config.scrollback_lines = 10000
 config.enable_scroll_bar = false
 
+-- 分屏
+config.keys = {
+  -- 垂直分屏（左右）
+  { key = '\\', mods = 'CMD', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }},
+  -- 水平分屏（上下）
+  { key = '-', mods = 'CMD', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }},
+  -- 关闭分屏
+  {key = 'q', mods = 'CMD|SHIFT', action = wezterm.action.CloseCurrentPane { confirm = false }},
+  -- 切换光标
+  { key = 'h', mods = 'CMD', action = wezterm.action.ActivatePaneDirection 'Left' },
+  { key = 'l', mods = 'CMD', action = wezterm.action.ActivatePaneDirection 'Right' },
+  { key = 'k', mods = 'CMD', action = wezterm.action.ActivatePaneDirection 'Up' },
+  { key = 'j', mods = 'CMD', action = wezterm.action.ActivatePaneDirection 'Down' },
+}
 return config
